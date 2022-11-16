@@ -5,11 +5,8 @@ from fighter import Fighter
 pygame.init()
 
 # Create game window
-SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = 600
-
-
-screen = pygame.display.set_mode(size=(SCREEN_WIDTH, SCREEN_HEIGHT))
+SCREEN_SIZE = (1000, 600)
+screen = pygame.display.set_mode(size=(SCREEN_SIZE))
 pygame.display.set_caption("Brawler")
 
 # set framerate
@@ -25,7 +22,7 @@ bg_image = pygame.image.load(
 
 
 def draw_bg():
-    scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+    scaled_bg = pygame.transform.scale(bg_image, (SCREEN_SIZE))
     screen.blit(scaled_bg, (0, 0))
 
 
