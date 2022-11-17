@@ -7,7 +7,7 @@ pygame.init()
 # Create game window
 SCREEN_SIZE = (1000, 600)
 screen = pygame.display.set_mode(size=(SCREEN_SIZE))
-pygame.display.set_caption("Brawler")
+pygame.display.set_caption("Fighting Legend")
 
 # set framerate
 clock = pygame.time.Clock()
@@ -40,8 +40,7 @@ while run:
     draw_bg()
 
     # move fighters
-    scorpion.move()
-    subzero.move()
+    scorpion.move(SCREEN_SIZE[0], SCREEN_SIZE[1], screen, subzero)
 
     # Draw fighter
     scorpion.draw(screen)
@@ -54,7 +53,6 @@ while run:
 
     # update display
     pygame.display.update()
-
 
 # exit pygame
 pygame.quit()
