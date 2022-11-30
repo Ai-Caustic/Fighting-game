@@ -9,7 +9,7 @@ SCREEN_SIZE = (1000, 600)
 screen = pygame.display.set_mode(size=(SCREEN_SIZE))
 pygame.display.set_caption("Fighting Legend")
 
-# set framerate
+# set frame rate
 clock = pygame.time.Clock()
 FPS = 60
 
@@ -19,11 +19,32 @@ RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 
+# Define fighter variables
+WARRIOR_SIZE = 162
+WARRIOR_SCALE = 4
+WARRIOR_OFFSET = [72, 56]
+WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
+WIZARD_SIZE = 250
+WIZARD_SCALE = 3
+WIZARD_OFFSET = [112, 107]
+WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
+
 # Load background image
 bg_image = pygame.image.load(
     "Assets/images/background/background.jpg").convert_alpha()
 
-# Function for drawing background image
+# load sprite sheets
+
+warrior_sheet = pygame.image.load(
+    "Assets/images/warrior/Sprites/warrior.png").convert_alpha()
+wizard_sheet = pygame.image.load(
+    "Assets/images/wizard/Sprites/wizard.png").convert_alpha()
+
+# Define number of steps in each animation
+WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
+WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
+
+# Drawing background image
 
 
 def draw_bg():
@@ -40,9 +61,10 @@ def draw_health_bar(health, x, y):
     pygame.draw.rect(screen, GREEN, (x, y, 400 * ratio, 30))
 
 
-    # Create two instances of fighters
-scorpion = Fighter(200, 310)
-subzero = Fighter(700, 310)
+# Create two instances of fighters
+scorpion = Fighter(200, 310, False, WARRIOR_DATA, warrior_sheet,
+                   WARRIOR_ANIMATION_STEPS)
+subzero = Fighter(700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS)
 
 # Game loop
 run = True
